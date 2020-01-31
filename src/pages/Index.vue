@@ -28,21 +28,21 @@
             <li class="mb-4">
               <a
                 class="text-brand hover:text-red-700"
-                href="#"
+                href="https://www.astralapp.com"
               >Astral &rarr;</a>
               <p class="mt-2 text-sm text-gray-700">Organize your GitHub Stars with ease</p>
             </li>
             <li class="mb-4">
               <a
                 class="text-brand hover:text-red-700"
-                href="#"
+                href="https://constantune.com/"
               >Constantune &rarr;</a>
               <p class="mt-2 text-sm text-gray-700">A simple, loopable SoundCloud playlist builder</p>
             </li>
             <li class="mb-4">
               <a
                 class="text-brand hover:text-red-700"
-                href="#"
+                href="https://github.com/knotworks"
               >Knot &rarr;</a>
               <p class="mt-2 text-sm text-gray-700">A decentralized server for building private social networks</p>
             </li>
