@@ -1422,17 +1422,17 @@
     consola "^2.15.0"
     eslint-webpack-plugin "^2.4.1"
 
-"@nuxtjs/tailwindcss@^4.0.1":
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-4.1.2.tgz#4a5a076e9c2b4a1075ad817ec7c9758c0ba57846"
-  integrity sha512-Ha8FmzKziQ24og+ivyyN1PM0+PSudPipjSy+OENIFDYS00UOulAIaqfc1qoTmH+P8nDONOzX6fdsj33s2CmB9w==
+"@nuxtjs/tailwindcss@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-4.1.3.tgz#6d14b0a6d47af540c4bfe642533f1ae5d6e0de86"
+  integrity sha512-CnvS2pwhyzabwuB1R6wYid6zSd1h+1fETQULF5l9SN+vskqzHwfYy/hbPBlaSgDHhF3HSJTs8XOjIxbTvDvSWw==
   dependencies:
     "@nuxt/postcss8" "^1.1.3"
     autoprefixer "^10.2.5"
     chalk "^4.1.1"
     clear-module "^4.1.1"
     consola "^2.15.3"
-    defu "^4.0.1"
+    defu "^5.0.0"
     postcss "^8.2.13"
     postcss-custom-properties "^11.0.0"
     postcss-nesting "^8.0.1"
@@ -3804,11 +3804,6 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
-
-date-fns@^2.21.3:
-  version "2.21.3"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.21.3.tgz#8f5f6889d7a96bbcc1f0ea50239b397a83357f9b"
-  integrity sha512-HeYdzCaFflc1i4tGbj7JKMjM4cKGYoyxwcIIkHzNgCkX8xXDNJDZXgDDVchIWpN4eQc3lH37WarduXFZJOtxfw==
 
 de-indent@^1.0.2:
   version "1.0.2"
