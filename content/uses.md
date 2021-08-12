@@ -1,6 +1,6 @@
 ---
 title: Uses
-lastUpdated: 'November 11th, 2020'
+lastUpdated: 'August 12th, 2021'
 ---
 
 ## Development
@@ -10,11 +10,6 @@ lastUpdated: 'November 11th, 2020'
 - Typeface — [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 - Terminal — [iTerm 2](https://www.iterm2.com/)
 - Shell — [Fish](https://fishshell.com/)
-
-## OS
-
-- macOS High Sierra — I use a Hackintosh with an NVIDIA graphics card, so this is the latest version I can use.
-- Windows 10 — For gaming, and that's pretty much it.
 
 ## Software
 
@@ -37,15 +32,21 @@ lastUpdated: 'November 11th, 2020'
 - [Übersicht](http://tracesof.net/uebersicht/) - Little desktop widgets you can write in React.
 - [Davinci Resolve](https://www.blackmagicdesign.com/ca/products/davinciresolve/) — For creating video-based animations.
 
-## Hackintosh Build
+## 2020 M1 Mac Mini
+
+- Apple M1 chip with 8‑core CPU, 8‑core GPU and 16‑core Neural Engine
+- 16GB unified memory
+- 512GB SSD storage
+
+## PC Build
 
 - ASUS ROG Strix Z370-E
 - Intel Core i7-8700K
 - Gigabyte GeForce GTX 1080 Windforce OC
 - Corsair Vengeance RGB 16GB (2x8GB) DDR4 2666MHz
 - Corsair Hydro Series H115i Pro RGB
-- WD Black 512GB Performance SSD (for Windows)
-- Samsung 970 PRO M.2 SSD (for macOS)
+- WD Black 512GB Performance SSD
+- Samsung 970 PRO M.2 SSD
 - EVGA SuperNOVA 650 G3, 80 Plus Gold 650W
 - NZXT S340 Elite (White)
 
@@ -61,9 +62,10 @@ lastUpdated: 'November 11th, 2020'
 - Focusrite Scarlett Solo Audio Interface
 - Elgato Stream Deck
 - Flexible Ring Light from Amazon
-- PowerA FUSION Pro Wired Xbox Controller
+- DualShock 4 Wireless Controller
 - ASUS ROG PG248Q (Primary monitor)
 - BenQ BL2420PT 24" QHD 1440p IPS (Secondary monitor)
+- UGREEN USB 3.0 Sharing Switch
 - iPhone 12 Pro (Pacific Blue)
 - Apple Watch Series 3
 - AirPods (for on the go)
