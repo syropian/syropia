@@ -156,6 +156,24 @@ export default {
   head() {
     return {
       title: 'Home | Syropia',
+      meta: [
+        {
+          name: 'description',
+          content: 'The personal website of Collin Henderson',
+        },
+        { name: 'og:title', content: 'Syropia' },
+        {
+          name: 'og:description',
+          content: 'The personal website of Collin Henderson',
+        },
+        { name: 'twitter:site', content: '@syropian' },
+        { name: 'twitter:title', content: 'Syropia' },
+        {
+          name: 'twitter:description',
+          content: 'The personal website of Collin Henderson',
+        },
+      ],
+      link: [{ rel: 'canonical', href: 'https://syropia.net' }],
     }
   },
 }

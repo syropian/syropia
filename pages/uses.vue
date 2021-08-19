@@ -38,6 +38,27 @@ export default {
   head() {
     return {
       title: 'Uses | Syropia',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'My everyday hardware and software for coding, gaming, and more.',
+        },
+        { name: 'og:title', content: 'Uses' },
+        {
+          name: 'og:description',
+          content:
+            'My everyday hardware and software for coding, gaming, and more.',
+        },
+        { name: 'twitter:site', content: '@syropian' },
+        { name: 'twitter:title', content: 'Uses' },
+        {
+          name: 'twitter:description',
+          content:
+            'My everyday hardware and software for coding, gaming, and more.',
+        },
+      ],
+      link: [{ rel: 'canonical', href: 'https://syropia.net/uses' }],
     }
   },
 }

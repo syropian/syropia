@@ -1,6 +1,6 @@
 ---
 title: How to Create a Global Event Bus in NuxtJS
-createdAt: '07-28-2020'
+createdAt: 07-28-2020
 ---
 
 In this article, I'm going to show you how simple it is to add a global event bus to your Nuxt application! In essence, all we have to do is create a small plugin, and then register the plugin in our Nuxt configuration file. Let's get started!
@@ -94,7 +94,7 @@ The `showNotification` method is pretty straightforward — we set the `isShowin
 
 For good measure we'll add some really simple styles.
 
-```vue
+```html
 <style>
 .notification {
   background-color: #c6f6d5;
