@@ -15,7 +15,7 @@
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
     "remark-emoji": "^2.2.0",
-    "shiki": "^0.9.3"
+    "shiki": "^0.9.9"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
