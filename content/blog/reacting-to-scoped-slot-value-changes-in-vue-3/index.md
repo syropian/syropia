@@ -1,0 +1,160 @@
+---
+title: Reacting to Scoped Slot Value Changes in Vue 3
+createdAt: 09-10-2021
+---
+
+Scoped slots are a powerful feature in Vue that allow you to internally manage state in a component, and then expose pieces of that state to its slot content. It's a very popular pattern for building "renderless" UI — that's UI where the core functionality is baked into an internal component, but leaves most of the styling decisions to the consumer. Depending on the library, there's a chance that while it exposes relevant state to you, it doesn't offer any events to hook into when you want to react to changes in that state. In this article I'll show you one way to solve this problem, by building our own renderless component which accepts a value, and emits an event whenever that value changes.
+<!--more-->
+
+## Getting Started
+
+First let's scaffold a quick Vue 3 project. I recommend using [Vite](https://vitejs.dev):
+
+```bash
+npm init vite@latest renderless-watch-value -- --template vue
+cd renderless-watch-value
+npm install
+npm run dev
+
+# or...
+
+yarn create vite renderless-watch-value --template vue
+cd renderless-watch-value
+yarn
+yarn dev
+```
+
+Before we create our watcher, let's put together a small demo component that uses scoped slots. Create a new file in `src/components` called `Counter.vue`, and paste in the following:
+
+```html
+<script>
+import { ref, h } from "vue"
+
+export default {
+  setup() {
+    const count = ref(0)
+    const increment = () => count.value++
+    const decrement = () => count.value--
+
+    return {
+      count,
+      increment,
+      decrement
+    };
+  },
+  render() {
+    const { count, increment, decrement } = this
+
+    return this.$slots.default({
+      count,
+      increment,
+      decrement,
+    })
+  },
+}
+</script>
+```
+
+This is an example of a renderless Vue component. It contains state, and methods to manipulate the state, but it doesn't have any associated template. It simply returns the public state and methods that should be accessible to the consumer in the default slot.
+
+## Using our Counter component
+
+Now we should wire this component up to some actual UI. Open `src/App.vue` and replace its contents with the following:
+
+```html
+<template>
+  <Counter v-slot="{ count, increment, decrement }">
+    <p>Count is {{ count }}</p>
+    <button @click="increment">Increment Count</button>
+    <button @click="decrement">Decrement Count</button>
+  </Counter>
+</template>
+<script setup>
+import Counter from "./components/Counter.vue"
+</script>
+```
+
+As you can see, the `<Counter>` component exposes both its internal `count` state, along with its methods for incrementing or decrementing the count. We can use these values to build our own UI for managing the count. Go ahead and visit http://localhost:3000 in your browser and you should be able to interact with the UI, and change the value of the count using the buttons.
+
+## Watching For Changes
+
+Scoped slots are clearly pretty powerful, but what if we need access to a slot scope value _outside_ the context of the component itself? Unfortunately there's no way to hoist that value higher up the tree (and that's by design), so what are we to do? Here's a neat little method I came up with while working on the new version of [Astral](https://astralapp.com), and it involves creating yet another renderless component!
+
+### Building the WatchValue Component
+
+In `src/components` add a new file called `WatchValue.vue` with the following:
+
+```html
+<script>
+import { watch } from "vue"
+
+export default {
+  props: {
+    value: {
+      required: true,
+      type: undefined,
+    },
+  },
+  emits: ["change"],
+  setup(props, { emit }) {
+    watch(
+      () => props.value,
+      (val) => {
+        emit("change", val)
+      }
+    );
+  },
+  render() {
+    return []
+  },
+};
+</script>
+```
+
+Even though this is actually a really simple component, we'll dissect it a bit anyway. The `<WatchValue />` components accepts a `value` prop of any watchable value, and uses Vue's built-in [watch](https://v3.vuejs.org/guide/reactivity-computed-watchers.html#watch) method to trigger a `change` event when the `value` prop changes. The `render` function simply returns an empty array, since we don't have any markup or slots to render. Now let's put it to the test.
+
+### Using Our New WatchValue Component
+
+To access a slot scope value outside the context of the provider, we'll need to create a new piece of state to sync it to. In `src/App.vue`, add a new ref and set its initial value to `0`:
+
+```js
+import { ref } from "vue"
+
+const parentCount = ref(0)
+```
+
+Now we should import our `WatchValue` component, and add it inside the `Counter` component. Your whole component should now look like this:
+
+```html
+<template>
+  <Counter v-slot="{ count, increment }">
+    <WatchValue :value="count" @change="parentCount = $event" />
+    <p>Count is {{ count }}</p>
+    <button @click="increment">Increment Count</button>
+  </Counter>
+</template>
+<script setup>
+import { ref } from "vue"
+import Counter from "./components/Counter.vue"
+import WatchValue from "./components/WatchValue.vue"
+
+const parentCount = ref(0)
+</script>
+```
+
+Now whenever the `Counter` component's `count` value changes, the `parentCount` ref value will be synced up to it. To test our solution go ahead and add a new `<p>` tag right above your `Counter` tag, and render out the `parentCount` value:
+
+```html
+<template>
+  <p>The synced count is {{ parentCount }} </p>
+  <Counter v-slot="{ count, increment, decrement }">
+    <WatchValue :value="count" @change="parentCount = $event" />
+    <p>Count is {{ count }}</p>
+    <button @click="increment">Increment Count</button>
+    <button @click="decrement">Decrement Count</button>
+  </Counter>
+</template>
+```
+As you can see, when you increment or decrement the counter value, the `parentCount` value stays perfectly in sync with it. It looks like our solution was a success! 🎉
+
+That's all for now! If you have any questions or comments, feel free to ping me on Twitter, [@syropian](https://twitter.com/syropian).

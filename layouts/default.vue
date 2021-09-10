@@ -36,7 +36,7 @@
 </template>
 
 <style>
-.nav-link:after {
+.nav-link::after {
   @apply bg-brand;
 
   transition: transform 150ms ease;
@@ -48,7 +48,11 @@
   width: 100%;
   height: 2px;
 }
-.nav-link:hover:after {
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link.nuxt-link-active::after {
   transform: scaleX(1);
 }
 </style>

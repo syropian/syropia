@@ -10,7 +10,7 @@
       <div class="flex-shrink-0">
         <svg
           v-if="type === 'info'"
-          class="w-5 h-5 text-blue-400"
+          class="w-5 h-5 text-blue-400 mt-[2px]"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -61,5 +61,9 @@ export default {
 p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+code {
+  color: currentColor;
 }
 </style>
