@@ -123,7 +123,7 @@ import { ref } from "vue"
 const parentCount = ref(0)
 ```
 
-Now we should import our `WatchValue` component, and add it inside the `Counter` component. Your whole component should now look like this:
+Now we should import our `WatchValue` component, and add it inside the `Counter` component. We'll pass `count` as the `value` prop, and we'll assign the changed value to `parentCount` inside the `change` event. Your whole component should now look like this:
 
 ```html
 <template>
