@@ -1,12 +1,12 @@
 ---
 title: Uses
-lastUpdated: 'August 12th, 2021'
+lastUpdated: 'October 29th, 2021'
 ---
 
 ## Development
 
 - Editor — [VS Code](https://code.visualstudio.com/)
-- Theme — I often rotate between [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl), [Overnight Slumber](https://marketplace.visualstudio.com/items?itemName=cev.overnight), [Moonlight II](https://marketplace.visualstudio.com/items?itemName=atomiks.moonlight), and [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
+- Theme — I often rotate between [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl), [Overnight Slumber](https://marketplace.visualstudio.com/items?itemName=cev.overnight), [Moonlight II](https://marketplace.visualstudio.com/items?itemName=atomiks.moonlight), [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night), and [Aura](https://github.com/daltonmenezes/aura-theme).
 - Typeface — [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 - Terminal — [iTerm 2](https://www.iterm2.com/)
 - Shell — [Fish](https://fishshell.com/)
@@ -25,7 +25,7 @@ lastUpdated: 'August 12th, 2021'
 - [Loopback](https://rogueamoeba.com/loopback/) — Easy per-source audio routing.
 - [IconJar](https://geticonjar.com/) — A place to store, organize and search my ever-growing collection of icons.
 - [Droplr](https://droplr.com/) — For sharing screenshots and recordings.
-- [Sip](https://sipapp.io/) — A clean and minimal colour grabbing tool.
+- [HandyPalette](https://apps.apple.com/us/app/handypalette/id1515022667?mt=12) — A clean and minimal colour grabbing tool.
 - [Figma](https://www.figma.com/) — For all my design needs.
 - [Magnet](https://magnet.crowdcafe.com/) — Awesome little window management tool.
 - [PixelSnap](https://getpixelsnap.com/) — For measuring spacing and sizes on screen.

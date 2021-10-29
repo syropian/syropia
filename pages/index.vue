@@ -21,8 +21,14 @@
               rel="noopener noreferrer nofollow"
               class="text-brand hover:text-red-700"
               >wife</a
-            >
-            and
+            >,
+            <a
+              href="https://www.instagram.com/p/CVixMChvbj5/"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              class="text-brand hover:text-red-700"
+              >daughter</a
+            >, and
             <a
               href="https://www.instagram.com/p/Bul7hjrHOEV/"
               target="_blank"
