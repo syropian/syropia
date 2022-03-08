@@ -236,5 +236,5 @@ If you aren't familiar with how Inertia works, instead of returning a normal Lar
 
 ## Adding the Todos UI
 
-We've now written all the backend logic required to create, update and delete todos, so let's build a simple interface for it. Go ahead and navigate to `resources/js/Pages/Dashboard.vue` — this is where we're  going to build our UI. I'm going to be using [TailwindCSS](https://tailwindcss.com) for the styling since I absolutely love it, and it's set up as part of the Breeze scaffold anyway. Feel free to use whatever styling system you like though!
+We've now written all the backend logic required to create, update and delete todos, so let's build a simple interface for it. Go ahead and navigate to `resources/js/Pages/Dashboard.vue` — this is where we're going to build our UI. I'm going to be using [TailwindCSS](https://tailwindcss.com) for the styling since I absolutely love it, and it's set up as part of the Breeze scaffold anyway. Feel free to use whatever styling system you like though!
 

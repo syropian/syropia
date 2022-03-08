@@ -23,7 +23,7 @@
               >wife</a
             >,
             <a
-              href="https://www.instagram.com/p/CVixMChvbj5/"
+              href="https://www.instagram.com/p/CaavyNLvcZR/"
               target="_blank"
               rel="noopener noreferrer nofollow"
               class="text-brand hover:text-red-700"
