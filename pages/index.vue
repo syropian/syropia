@@ -45,16 +45,16 @@
             Professionally
           </h3>
           <p class="mt-2 text-lg font-medium leading-loose text-gray-700">
-            I'm a Sr. Front-end Developer at
+            I'm a Sr. Software Engineer at
             <a
-              href="https://www.format.com"
+              href="https://joincombo.com"
               target="_blank"
               rel="noopener noreferrer nofollow"
               class="text-brand hover:text-red-700"
-              >Format</a
+              >Combo</a
             >
-            — a beautiful platform for photographers to showcase their work, and
-            grow their business.
+            — a platform to assist content creators with editing and publishing
+            their live stream clips to other platforms.
           </p>
         </div>
         <div>
