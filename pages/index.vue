@@ -53,8 +53,8 @@
               class="text-brand hover:text-red-700"
               >Combo</a
             >
-            — a platform to assist content creators with editing and publishing
-            their live stream clips to other platforms.
+            — a web-based tool to assist content creators with editing and
+            publishing their live stream clips to other platforms.
           </p>
         </div>
         <div>
