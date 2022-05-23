@@ -1,6 +1,6 @@
 ---
 title: Uses
-lastUpdated: 'October 29th, 2021'
+lastUpdated: 'May 23rd, 2022'
 ---
 
 ## Development
@@ -14,7 +14,7 @@ lastUpdated: 'October 29th, 2021'
 ## Software
 
 - [Brave](https://brave.com/) — For browsing and development.
-- [Alfred](https://www.alfredapp.com/) — Like Spotlight, but way better.
+- [Raycast](https://www.raycast.com/) — Like Spotlight, but way better.
 - [Discord](https://discord.com/), [Slack](https://slack.com/) — For chatting on-line.
 - [1Password](https://1password.com/) — Quick, secure access to all my passwords.
 - [Bear](https://bear.app/) — For quick notes, and ideas.
@@ -24,7 +24,6 @@ lastUpdated: 'October 29th, 2021'
 - [OBS Studio](https://obsproject.com/) — For livestreaming code and gaming on Twitch.
 - [Loopback](https://rogueamoeba.com/loopback/) — Easy per-source audio routing.
 - [IconJar](https://geticonjar.com/) — A place to store, organize and search my ever-growing collection of icons.
-- [Droplr](https://droplr.com/) — For sharing screenshots and recordings.
 - [HandyPalette](https://apps.apple.com/us/app/handypalette/id1515022667?mt=12) — A clean and minimal colour grabbing tool.
 - [Figma](https://www.figma.com/) — For all my design needs.
 - [Magnet](https://magnet.crowdcafe.com/) — Awesome little window management tool.
