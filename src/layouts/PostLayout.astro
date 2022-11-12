@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import type { MDXLayoutProps } from "astro";
+
+type Props = MDXLayoutProps<{
+  title: string;
+  createdAt: Date;
+}>;
+
+const { title, frontmatter } = Astro.props;
+
+const createdAt = new Date(frontmatter.createdAt).toLocaleDateString("en", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={title}>
+  <article class="mt-8 prose prose-slate">
+    <small
+      class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase"
+      >{createdAt}</small
+    >
+    <h1>{frontmatter.title}</h1>
+    <slot />
+  </article>
+</Layout>

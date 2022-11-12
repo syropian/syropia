@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import * as page from "../content/uses.md";
+---
+
+<Layout title="Uses | Syropia">
+  <h1 class="text-3xl font-bold leading-normal text-brand">
+    {page.frontmatter.title}
+  </h1>
+  <h2 class="text-3xl font-light leading-normal text-gray-500">
+    Gear &amp; Software
+  </h2>
+  <small
+    class="block mt-4 text-xs font-semibold tracking-wider text-gray-500 uppercase"
+    >Updated: {page.frontmatter.lastUpdated}</small
+  >
+  <div class="mt-6 prose">
+    <p>
+      This is where I'll try and keep an updated summary of the hardware,
+      software, and tooling I use for web development and streaming. Inspired by
+      <a href="https://uses.tech/" target="_blank" rel="noopener noreferrer"
+        >Uses.tech</a
+      >.
+    </p>
+    <article class="mt-8" set:html={page.compiledContent()} />
+  </div>
+</Layout>

@@ -1,0 +1,68 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fast.fonts.net/cssapi/7befbbc4-a64a-4d13-87f0-377478abd2e7.css"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="max-w-2xl px-8 mx-auto mt-12 md:px-0 layout">
+      <header class="flex flex-col items-center sm:justify-between sm:flex-row">
+        <a href="/" class="h-10">
+          <img alt="Syropia" src="/logo.svg" class="h-full" />
+        </a>
+        <nav class="mt-8 space-x-8 sm:mt-0">
+          <a
+            href="/posts"
+            class="relative text-sm font-bold tracking-widest uppercase nav-link text-brand"
+            >Posts</a
+          >
+          <a
+            href="/uses"
+            class="relative text-sm font-bold tracking-widest uppercase nav-link text-brand"
+            >Uses</a
+          >
+          <a
+            href="mailto:collin@syropia.net"
+            class="relative text-sm font-bold tracking-widest uppercase nav-link text-brand"
+            >Contact</a
+          >
+        </nav>
+      </header>
+      <main class="mt-16 sm:mt-32">
+        <slot />
+      </main>
+      <footer class="my-10">
+        <p class="text-sm text-gray-500">
+          &copy; {new Date().getFullYear()} Collin Henderson. Don't steal my stuff
+          pls.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  header nav a::after {
+    @apply bg-brand transition-transform absolute bottom-[-5px] left-0 w-full h-0.5 content-[''] scale-x-0;
+  }
+
+  header nav a:hover::after {
+    @apply scale-x-100;
+  }
+</style>
