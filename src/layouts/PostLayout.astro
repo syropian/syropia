@@ -26,9 +26,11 @@ const meta = {
 ---
 
 <Layout meta={meta}>
-  <article class="mt-8 prose prose-slate">
+  <article
+    class="mt-8 prose prose-slate dark:prose-invert dark:prose-p:text-gray-300"
+  >
     <small
-      class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase"
+      class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400"
       >{createdAt}</small
     >
     <h1 class="text-2xl sm:text-4xl">{frontmatter.title}</h1>

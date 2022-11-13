@@ -9,18 +9,22 @@ const meta = {
 
 <Layout meta={meta}>
   <section class="intro">
-    <h2 class="text-3xl leading-normal text-gray-500">
+    <h2 class="text-3xl leading-normal">
       <span class="block font-bold text-brand">Hi there!</span>
-      <span class="font-light">I'm Collin Henderson</span>
+      <span class="font-light text-gray-500 dark:text-gray-300"
+        >I'm Collin Henderson</span
+      >
     </h2>
     <div class="mt-8 space-y-6 sm:space-y-8">
       <div>
         <h3
-          class="inline-block px-2 py-1 text-sm font-semibold tracking-wide bg-red-100 rounded-sm text-brand"
+          class="inline-block px-2 py-1 text-sm font-semibold tracking-wide bg-red-100 rounded-sm text-brand dark:bg-red-900/70 dark:text-white/80"
         >
           About Me
         </h3>
-        <p class="mt-2 text-lg font-medium leading-loose text-gray-700">
+        <p
+          class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400"
+        >
           A digital explorer, builder, and educator living in lovely
           Collingwood, Ontario 🇨🇦&nbsp;with my
           <a
@@ -45,11 +49,13 @@ const meta = {
       </div>
       <div>
         <h3
-          class="inline-block px-2 py-1 text-sm font-semibold tracking-wide bg-red-100 rounded-sm text-brand"
+          class="inline-block px-2 py-1 text-sm font-semibold tracking-wide bg-red-100 rounded-sm text-brand dark:bg-red-900/70 dark:text-white/80"
         >
           Professionally
         </h3>
-        <p class="mt-2 text-lg font-medium leading-loose text-gray-700">
+        <p
+          class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400"
+        >
           I'm a Sr. Software Engineer at
           <a
             href="https://joincombo.com"
@@ -63,11 +69,13 @@ const meta = {
       </div>
       <div>
         <h3
-          class="inline-block px-2 py-1 text-sm font-semibold tracking-wide bg-red-100 rounded-sm text-brand"
+          class="inline-block px-2 py-1 text-sm font-semibold tracking-wide bg-red-100 rounded-sm text-brand dark:bg-red-900/70 dark:text-white/80"
         >
           Hobbies
         </h3>
-        <p class="mt-2 text-lg font-medium leading-loose text-gray-700">
+        <p
+          class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400"
+        >
           Whiffing open nets in Rocket League, playing the guitar (poorly), and
           watching documentaries about sharks, tornadoes, or food.
         </p>
@@ -76,7 +84,9 @@ const meta = {
   </section>
   <section class="mt-16 md:flex md:justify-between">
     <div class="projects">
-      <h3 class="text-2xl font-light text-gray-500">Projects</h3>
+      <h3 class="text-2xl font-light text-gray-500 dark:text-gray-300">
+        Projects
+      </h3>
       <ul class="mt-6 space-y-4">
         <li>
           <a
@@ -85,7 +95,7 @@ const meta = {
             target="_blank"
             rel="noopener noreferrer nofollow">Astral &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             Organize your GitHub Stars with ease
           </p>
         </li>
@@ -96,7 +106,7 @@ const meta = {
             target="_blank"
             rel="noopener noreferrer nofollow">Knot &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             A self-hosted social network for families and other small groups
           </p>
         </li>
@@ -113,14 +123,16 @@ const meta = {
               rel="noopener noreferrer nofollow">UnderWraps &rarr;</a
             >
           </div>
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             Beautifully simple gift exchanges
           </p>
         </li>
       </ul>
     </div>
     <div class="mt-8 md:mt-0 social">
-      <h3 class="text-2xl font-light text-gray-500">Social</h3>
+      <h3 class="text-2xl font-light text-gray-500 dark:text-gray-300">
+        Social
+      </h3>
       <ul class="mt-6 space-y-4">
         <li>
           <a
@@ -129,7 +141,7 @@ const meta = {
             rel="noopener noreferrer nofollow"
             href="https://github.com/syropian">GitHub &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             Open source goodness
           </p>
         </li>
@@ -140,7 +152,7 @@ const meta = {
             rel="noopener noreferrer nofollow"
             href="https://twitter.com/syropian">Twitter &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             Geeky ramblings and such
           </p>
         </li>
@@ -151,7 +163,9 @@ const meta = {
             rel="me noopener noreferrer"
             href="https://mastodon.social/@syropian">Mastodon &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">Toot toot</p>
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
+            Toot toot
+          </p>
         </li>
         <li>
           <a
@@ -160,7 +174,7 @@ const meta = {
             rel="noopener noreferrer nofollow"
             href="https://twitch.com/syropian">Twitch &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             Watch me code live
           </p>
         </li>
@@ -171,7 +185,7 @@ const meta = {
             rel="noopener noreferrer nofollow"
             href="https://instagram.com/syropian">Instagram &rarr;</a
           >
-          <p class="mt-2 text-base text-gray-700 sm:text-sm">
+          <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
             Pictures of sunsets and my cats
           </p>
         </li>

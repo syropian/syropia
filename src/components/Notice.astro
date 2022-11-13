@@ -8,9 +8,10 @@ const { type = "info" } = Astro.props;
 
 <div
   class:list={[
-    "p-4 border-l-4 prose-p:my-0 prose-code:text-blue-900 rounded-tr-lg rounded-br-lg",
+    "p-4 border-l-4 prose-p:my-0 prose-code:text-blue-900 dark:prose-code:text-blue-300 rounded-tr-lg rounded-br-lg",
     {
-      "border-blue-400 bg-blue-100": type === "info",
+      "border-blue-400 bg-blue-100 dark:bg-blue-900/50 dark:border-blue-700":
+        type === "info",
       "border-yellow-400 bg-yellow-100": type === "warning",
     },
   ]}
@@ -20,7 +21,7 @@ const { type = "info" } = Astro.props;
       {
         type === "info" && (
           <svg
-            class="w-5 h-5 text-blue-400 mt-0.5"
+            class="w-5 h-5 text-blue-400 dark:text-blue-300 mt-0.5"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"

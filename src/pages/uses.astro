@@ -13,14 +13,16 @@ const meta = {
   <h1 class="text-3xl font-bold leading-normal text-brand">
     {page.frontmatter.title}
   </h1>
-  <h2 class="text-3xl font-light leading-normal text-gray-500">
+  <h2
+    class="text-3xl font-light leading-normal text-gray-500 dark:text-gray-300"
+  >
     Gear &amp; Software
   </h2>
   <small
-    class="block mt-4 text-xs font-semibold tracking-wider text-gray-500 uppercase"
+    class="block mt-4 text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase"
     >Updated: {page.frontmatter.lastUpdated}</small
   >
-  <div class="mt-6 prose">
+  <div class="mt-6 prose dark:prose-invert dark:prose-p:text-gray-300">
     <p>
       This is where I'll try and keep an updated summary of the hardware,
       software, and tooling I use for web development and streaming. Inspired by

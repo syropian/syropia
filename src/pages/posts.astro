@@ -19,11 +19,15 @@ const meta = {
 
 <Layout meta={meta}>
   <h1 class="text-3xl font-bold leading-normal text-brand">Posts</h1>
-  <h2 class="text-3xl font-light leading-normal text-gray-500">
+  <h2
+    class="text-3xl font-light leading-normal text-gray-500 dark:text-gray-300"
+  >
     Technical tidbits for everyday coders
   </h2>
   <section>
-    <ul class="mt-10 border-b border-gray-200 divide-y divide-gray-200">
+    <ul
+      class="mt-10 border-b border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700"
+    >
       {
         posts
           .sort(
@@ -34,10 +38,10 @@ const meta = {
           .map((post) => (
             <li>
               <a href={post.url} class="group py-6 block">
-                <small class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase">
+                <small class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400">
                   {formatDate(post.frontmatter.publishedAt as string)}
                 </small>
-                <h3 class="text-2xl font-bold group-hover:text-brand text-gray-600 transition-colors">
+                <h3 class="text-2xl font-bold group-hover:text-brand text-gray-600 transition-colors dark:text-gray-300">
                   {post.frontmatter.title}
                 </h3>
               </a>
