@@ -20,12 +20,16 @@ const og = {
   },
   image: {
     alt: "A geometric moose logo with the text syropia.net",
+    type: "image/png",
+    width: 1200,
+    height: 630,
   },
   optional: {
     description: meta.description,
   },
   ...(meta.type === "article" && {
     article: {
+      author: "Collin Henderson",
       publishedTime: new Date(meta.publishedAt as string).toISOString(),
     },
   }),
