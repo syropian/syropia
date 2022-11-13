@@ -18,11 +18,18 @@ const og = {
     type: meta.type || "website",
     image: "https://f001.backblazeb2.com/file/syropia-blog/og_image.png",
   },
+  image: {
+    alt: "A geometric moose logo with the text syropia.net",
+    type: "image/png",
+    width: 1200,
+    height: 630,
+  },
   optional: {
     description: meta.description,
   },
   ...(meta.type === "article" && {
     article: {
+      author: "Collin Henderson",
       publishedTime: new Date(meta.publishedAt as string).toISOString(),
     },
   }),
@@ -71,11 +78,19 @@ const og = {
     <div class="max-w-2xl px-8 mx-auto mt-12 md:px-0 layout">
       <header class="flex flex-col items-center sm:justify-between sm:flex-row">
         <a href="/" class="h-10">
-          <img alt="Syropia" src="/logo.svg" class="h-full block dark:hidden" />
+          <img
+            alt="Syropia"
+            src="/logo.svg"
+            class="h-full block dark:hidden"
+            width="165"
+            height="40"
+          />
           <img
             alt="Syropia"
             src="/logo-light.svg"
             class="h-full hidden dark:block"
+            width="165"
+            height="40"
           />
         </a>
         <nav class="mt-8 space-x-8 sm:mt-0">
