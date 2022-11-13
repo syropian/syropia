@@ -8,7 +8,7 @@ const { type = "info" } = Astro.props;
 
 <div
   class:list={[
-    "p-4 border-l-4 prose-p:my-0 prose-code:text-blue-900",
+    "p-4 border-l-4 prose-p:my-0 prose-code:text-blue-900 rounded-tr-lg rounded-br-lg",
     {
       "border-blue-400 bg-blue-100": type === "info",
       "border-yellow-400 bg-yellow-100": type === "warning",

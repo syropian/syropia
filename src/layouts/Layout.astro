@@ -29,13 +29,17 @@ const { title } = Astro.props;
         <nav class="mt-8 space-x-8 sm:mt-0">
           <a
             href="/posts"
-            class="relative text-sm font-bold tracking-widest uppercase nav-link text-brand"
-            >Posts</a
+            class:list={[
+              "relative text-sm font-bold tracking-widest uppercase nav-link text-brand",
+              { active: Astro.url.pathname.startsWith("/posts") },
+            ]}>Posts</a
           >
           <a
             href="/uses"
-            class="relative text-sm font-bold tracking-widest uppercase nav-link text-brand"
-            >Uses</a
+            class:list={[
+              "relative text-sm font-bold tracking-widest uppercase nav-link text-brand",
+              { active: Astro.url.pathname.startsWith("/uses") },
+            ]}>Uses</a
           >
           <a
             href="mailto:collin@syropia.net"
@@ -62,6 +66,7 @@ const { title } = Astro.props;
     @apply bg-brand transition-transform absolute bottom-[-5px] left-0 w-full h-0.5 content-[''] scale-x-0;
   }
 
+  header nav a.active::after,
   header nav a:hover::after {
     @apply scale-x-100;
   }

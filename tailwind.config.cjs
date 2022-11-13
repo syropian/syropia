@@ -17,6 +17,7 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
+              transition: "color 150ms linear",
               "&:hover": {
                 color: "#dc393e",
               },
@@ -27,4 +28,7 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/typography")],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };

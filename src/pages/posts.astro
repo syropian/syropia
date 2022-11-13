@@ -27,12 +27,12 @@ const formatDate = (date: string | Date) => {
               new Date(a.frontmatter.createdAt).getTime()
           )
           .map((post) => (
-            <li class="py-6">
-              <a href={post.url} class="group">
+            <li>
+              <a href={post.url} class="group py-6 block">
                 <small class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase">
                   {formatDate(post.frontmatter.createdAt)}
                 </small>
-                <h3 class="text-2xl font-bold group-hover:text-brand">
+                <h3 class="text-2xl font-bold group-hover:text-brand text-gray-600 transition-colors">
                   {post.frontmatter.title}
                 </h3>
               </a>
