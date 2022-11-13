@@ -1,7 +1,8 @@
 ---
 layout: ../../layouts/PostLayout.astro
 title: Reacting to Scoped Slot Value Changes in Vue 3
-createdAt: 09-10-2021
+publishedAt: 09-10-2021
+description: Scoped slots are a powerful feature in Vue that allow you to internally manage state in a component, and then expose pieces of that state to its slot content. It's a very popular pattern for building "renderless" UI — that's UI where the core functionality is baked into an internal component, but leaves most of the styling decisions to the consumer. Depending on the library, there's a chance that while it exposes relevant state to you, it doesn't offer any events to hook into when you want to react to changes in that state. In this article I'll show you one way to solve this problem, by building our own renderless component which accepts a value, and emits an event whenever that value changes.
 ---
 
 Scoped slots are a powerful feature in Vue that allow you to internally manage state in a component, and then expose pieces of that state to its slot content. It's a very popular pattern for building "renderless" UI — that's UI where the core functionality is baked into an internal component, but leaves most of the styling decisions to the consumer. Depending on the library, there's a chance that while it exposes relevant state to you, it doesn't offer any events to hook into when you want to react to changes in that state. In this article I'll show you one way to solve this problem, by building our own renderless component which accepts a value, and emits an event whenever that value changes.

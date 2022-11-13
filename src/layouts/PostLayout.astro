@@ -4,19 +4,28 @@ import type { MDXLayoutProps } from "astro";
 
 type Props = MDXLayoutProps<{
   title: string;
-  createdAt: Date;
+  description: string;
+  publishedAt: string;
+  updatedAt?: string;
 }>;
 
-const { title, frontmatter } = Astro.props;
+const { frontmatter } = Astro.props;
 
-const createdAt = new Date(frontmatter.createdAt).toLocaleDateString("en", {
+const createdAt = new Date(frontmatter.publishedAt).toLocaleDateString("en", {
   year: "numeric",
   month: "long",
   day: "numeric",
 });
+
+const meta = {
+  title: frontmatter.title,
+  description: frontmatter.description,
+  publishedAt: frontmatter.publishedAt,
+  type: "article",
+};
 ---
 
-<Layout title={title}>
+<Layout meta={meta}>
   <article class="mt-8 prose prose-slate">
     <small
       class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase"

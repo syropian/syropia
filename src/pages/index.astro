@@ -1,8 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const meta = {
+  title: "Home",
+  description: "The personal website of Collin Henderson",
+};
 ---
 
-<Layout title="Home | Syropia">
+<Layout meta={meta}>
   <section class="intro">
     <h2 class="text-3xl leading-normal text-gray-500">
       <span class="block font-bold text-brand">Hi there!</span>
@@ -138,6 +143,15 @@ import Layout from "../layouts/Layout.astro";
           <p class="mt-2 text-base text-gray-700 sm:text-sm">
             Geeky ramblings and such
           </p>
+        </li>
+        <li>
+          <a
+            class="text-brand hover:text-red-700 transition-colors"
+            target="_blank"
+            rel="me noopener noreferrer"
+            href="https://mastodon.social/@syropian">Mastodon &rarr;</a
+          >
+          <p class="mt-2 text-base text-gray-700 sm:text-sm">Toot toot</p>
         </li>
         <li>
           <a

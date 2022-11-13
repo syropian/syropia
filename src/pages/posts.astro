@@ -10,9 +10,14 @@ const formatDate = (date: string | Date) => {
     year: "numeric",
   });
 };
+
+const meta = {
+  title: "Posts",
+  description: "Technical tidbits for everyday coders.",
+};
 ---
 
-<Layout title="Posts | Syropia">
+<Layout meta={meta}>
   <h1 class="text-3xl font-bold leading-normal text-brand">Posts</h1>
   <h2 class="text-3xl font-light leading-normal text-gray-500">
     Technical tidbits for everyday coders

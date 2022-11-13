@@ -1,9 +1,32 @@
 ---
+import { SEO } from "astro-seo";
+
 export interface Props {
-  title: string;
+  meta: {
+    title: string;
+    type?: string;
+    description: string;
+    publishedAt?: string;
+  };
 }
 
-const { title } = Astro.props;
+const { meta } = Astro.props;
+
+const og = {
+  basic: {
+    title: meta.title === "Home" ? "Syropia" : meta.title,
+    type: meta.type || "website",
+    image: "https://f001.backblazeb2.com/file/syropia-blog/og_image.png",
+  },
+  optional: {
+    description: meta.description,
+  },
+  ...(meta.type === "article" && {
+    article: {
+      publishedTime: new Date(meta.publishedAt as string).toISOString(),
+    },
+  }),
+};
 ---
 
 <!DOCTYPE html>
@@ -18,7 +41,31 @@ const { title } = Astro.props;
       href="//fast.fonts.net/cssapi/7befbbc4-a64a-4d13-87f0-377478abd2e7.css"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SEO
+      title={`${meta.title} | Syropia`}
+      description={meta.description}
+      openGraph={og}
+      canonical={new URL(Astro.url.pathname, Astro.site).toString()}
+      twitter={{
+        card: "summary_large_image",
+        site: "@syropian",
+        creator: "@syropian",
+      }}
+      extend={{
+        meta: [
+          {
+            name: "twitter:title",
+            content: meta.title === "Home" ? "Syropia" : meta.title,
+          },
+          { name: "twitter:description", content: meta.description },
+          {
+            name: "twitter:image",
+            content:
+              "https://f001.backblazeb2.com/file/syropia-blog/og_image.png",
+          },
+        ],
+      }}
+    />
   </head>
   <body>
     <div class="max-w-2xl px-8 mx-auto mt-12 md:px-0 layout">

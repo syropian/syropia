@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import * as page from "../content/uses.md";
+
+const meta = {
+  title: "Uses",
+  description:
+    "My everyday hardware and software for coding, gaming, and more.",
+};
 ---
 
-<Layout title="Uses | Syropia">
+<Layout meta={meta}>
   <h1 class="text-3xl font-bold leading-normal text-brand">
     {page.frontmatter.title}
   </h1>
