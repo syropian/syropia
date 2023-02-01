@@ -75,20 +75,20 @@ const og = {
     />
   </head>
   <body class="dark:bg-gray-900">
-    <div class="max-w-2xl px-8 mx-auto mt-12 md:px-0 layout">
-      <header class="flex flex-col items-center sm:justify-between sm:flex-row">
+    <div class="layout mx-auto mt-12 max-w-2xl px-8 md:px-0">
+      <header class="flex flex-col items-center sm:flex-row sm:justify-between">
         <a href="/" class="h-10">
           <img
             alt="Syropia"
             src="/logo.svg"
-            class="h-full block dark:hidden"
+            class="block h-full dark:hidden"
             width="165"
             height="40"
           />
           <img
             alt="Syropia"
             src="/logo-light.svg"
-            class="h-full hidden dark:block"
+            class="hidden h-full dark:block"
             width="165"
             height="40"
           />
@@ -110,7 +110,7 @@ const og = {
           >
           <a
             href="mailto:collin@syropia.net"
-            class="relative text-sm font-bold tracking-widest uppercase nav-link text-brand"
+            class="nav-link relative text-sm font-bold uppercase tracking-widest text-brand"
             >Contact</a
           >
         </nav>
@@ -125,16 +125,15 @@ const og = {
         </p>
       </footer>
     </div>
+    <style>
+      header nav a::after {
+        @apply absolute bottom-[-5px] left-0 h-0.5 w-full origin-right scale-x-0 bg-brand transition-transform content-[''];
+      }
+
+      header nav a.active::after,
+      header nav a:hover::after {
+        @apply origin-left scale-x-100;
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  header nav a::after {
-    @apply absolute bottom-[-5px] left-0 h-0.5 w-full scale-x-0 bg-brand transition-transform content-[''];
-  }
-
-  header nav a.active::after,
-  header nav a:hover::after {
-    @apply scale-x-100;
-  }
-</style>

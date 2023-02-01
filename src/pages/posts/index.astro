@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
 const posts = (await getCollection("posts")).sort(
-  (a, b) => a.data.publishedAt.valueOf() - b.data.publishedAt.valueOf()
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
 );
 
 const formatDate = (date: Date) => {
@@ -28,20 +28,36 @@ const meta = {
     Technical tidbits for everyday coders
   </h2>
   <section>
-    <ul
-      class="mt-10 border-b border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700"
-    >
+    <ul class="mt-10">
       {
         posts.map((post) => (
-          <li>
-            <a href={`/posts/${post.slug}`} class="group block py-6">
-              <small class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                {formatDate(post.data.publishedAt)}
-              </small>
-              <h3 class="group-hover:text-brand text-2xl font-bold text-gray-600 transition-colors dark:text-gray-300">
-                {post.data.title}
-              </h3>
+          <li class="group relative border-b border-gray-200 dark:border-gray-700">
+            <a href={`/posts/${post.slug}`} class="flex items-center py-6">
+              <div class="pr-4">
+                <small class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 transition-colors group-hover:text-gray-600 dark:text-gray-400 group-hover:dark:text-gray-300">
+                  {formatDate(post.data.publishedAt)}
+                </small>
+                <h3 class="group-hover:text-brand text-2xl font-bold text-gray-600 transition-colors dark:text-gray-300">
+                  {post.data.title}
+                </h3>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="ml-auto h-6 w-6 flex-shrink-0 -translate-x-4 text-gray-600 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100 dark:text-gray-300"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                  clip-rule="evenodd"
+                />
+              </svg>
             </a>
+            <div
+              aria-hidden
+              class="bg-brand absolute left-0 -bottom-px z-10 h-1 w-full origin-left scale-x-0 transition-transform group-hover:scale-x-100"
+            />
           </li>
         ))
       }
