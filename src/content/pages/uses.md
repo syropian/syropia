@@ -1,13 +1,19 @@
 ---
 title: Uses
-updatedAt: 09-10-2021
+updatedAt: 02-01-2023
 description: My everyday hardware and software for coding, gaming, and more.
 ---
 
 ## Development
 
 - Editor — [VS Code](https://code.visualstudio.com/)
-- Theme — I often rotate between [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl), [Overnight Slumber](https://marketplace.visualstudio.com/items?itemName=cev.overnight), [Moonlight II](https://marketplace.visualstudio.com/items?itemName=atomiks.moonlight), [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night), and [Aura](https://github.com/daltonmenezes/aura-theme).
+- Theme — I often rotate between mutliple themes to keep things fresh. Here's a few of my favourites:
+  - [Night Owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
+  - [Overnight Slumber](https://marketplace.visualstudio.com/items?itemName=cev.overnight)
+  - [Moonlight II](https://marketplace.visualstudio.com/items?itemName=atomiks.moonlight)
+  - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
+  - [Aura](https://github.com/daltonmenezes/aura-theme)
+  - [Catppuccin](https://github.com/catppuccin/catppuccin)
 - Typeface — [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 - Terminal — [iTerm 2](https://www.iterm2.com/)
 - Shell — [Fish](https://fishshell.com/)
@@ -18,7 +24,6 @@ description: My everyday hardware and software for coding, gaming, and more.
 - [Raycast](https://www.raycast.com/) — Like Spotlight, but way better.
 - [Discord](https://discord.com/), [Slack](https://slack.com/) — For chatting on-line.
 - [1Password](https://1password.com/) — Quick, secure access to all my passwords.
-- [Bear](https://bear.app/) — For quick notes, and ideas.
 - [Spotify](https://www.spotify.com/) — For tunes and podcasts.
 - [Fantastical](https://flexibits.com/fantastical) — A nice minimal calendar app.
 - [OBS Studio](https://obsproject.com/) — For livestreaming code and gaming on Twitch.
