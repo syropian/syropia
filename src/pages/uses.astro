@@ -1,17 +1,21 @@
 ---
+import { getEntryBySlug } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import * as page from "../content/uses.md";
 
-const meta = {
-  title: "Uses",
-  description:
-    "My everyday hardware and software for coding, gaming, and more.",
-};
+const page = await getEntryBySlug("pages", "uses");
+
+const updatedAt = (page.data.updatedAt as Date).toLocaleDateString("en", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const { Content } = await page.render();
 ---
 
-<Layout meta={meta}>
+<Layout meta={page.data}>
   <h1 class="text-3xl font-bold leading-normal text-brand">
-    {page.frontmatter.title}
+    {page.data.title}
   </h1>
   <h2
     class="text-3xl font-light leading-normal text-gray-500 dark:text-gray-300"
@@ -20,7 +24,7 @@ const meta = {
   </h2>
   <small
     class="block mt-4 text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase"
-    >Updated: {page.frontmatter.lastUpdated}</small
+    >Updated: {updatedAt}</small
   >
   <div class="mt-6 prose dark:prose-invert dark:prose-p:text-gray-300">
     <p>
@@ -30,6 +34,6 @@ const meta = {
         >Uses.tech</a
       >.
     </p>
-    <article class="mt-8" set:html={page.compiledContent()} />
+    <article class="mt-8"><Content /></article>
   </div>
 </Layout>

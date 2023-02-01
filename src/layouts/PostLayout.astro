@@ -1,26 +1,21 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import type { MDXLayoutProps } from "astro";
 
-type Props = MDXLayoutProps<{
-  title: string;
-  description: string;
-  publishedAt: string;
-  updatedAt?: string;
-}>;
+type Props = CollectionEntry<"posts">["data"];
 
-const { frontmatter } = Astro.props;
+const props = Astro.props;
 
-const createdAt = new Date(frontmatter.publishedAt).toLocaleDateString("en", {
+const publishedAt = props.publishedAt.toLocaleDateString("en", {
   year: "numeric",
   month: "long",
   day: "numeric",
 });
 
 const meta = {
-  title: frontmatter.title,
-  description: frontmatter.description,
-  publishedAt: frontmatter.publishedAt,
+  title: props.title,
+  description: props.description,
+  publishedAt: props.publishedAt,
   type: "article",
 };
 ---
@@ -31,9 +26,9 @@ const meta = {
   >
     <small
       class="block mb-2 text-sm font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400"
-      >{createdAt}</small
+      >{publishedAt}</small
     >
-    <h1 class="text-2xl sm:text-4xl">{frontmatter.title}</h1>
+    <h1 class="text-2xl sm:text-4xl">{props.title}</h1>
     <slot />
   </article>
 </Layout>

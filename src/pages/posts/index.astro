@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => a.data.publishedAt.valueOf() - b.data.publishedAt.valueOf()
+);
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
+const meta = {
+  title: "Posts",
+  description: "Technical tidbits for everyday coders.",
+};
+---
+
+<Layout meta={meta}>
+  <h1 class="text-3xl font-bold leading-normal text-brand">Posts</h1>
+  <h2
+    class="text-3xl font-light leading-normal text-gray-500 dark:text-gray-300"
+  >
+    Technical tidbits for everyday coders
+  </h2>
+  <section>
+    <ul
+      class="mt-10 border-b border-gray-200 dark:border-gray-700 divide-y divide-gray-200 dark:divide-gray-700"
+    >
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/posts/${post.slug}`} class="group block py-6">
+              <small class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                {formatDate(post.data.publishedAt)}
+              </small>
+              <h3 class="group-hover:text-brand text-2xl font-bold text-gray-600 transition-colors dark:text-gray-300">
+                {post.data.title}
+              </h3>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

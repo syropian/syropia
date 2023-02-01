@@ -1,6 +1,7 @@
 ---
-title: 'Uses'
-lastUpdated: 'November 7th, 2022'
+title: Uses
+updatedAt: 09-10-2021
+description: My everyday hardware and software for coding, gaming, and more.
 ---
 
 ## Development
@@ -59,9 +60,9 @@ lastUpdated: 'November 7th, 2022'
 - Elgato Stream Deck
 - UBeesize ring light
 - DualShock 4 Wireless Controller
-- ASUS ROG PG248Q (Primary monitor)
-- BenQ BL2420PT 24" QHD 1440p IPS (Secondary monitor)
+- ASUS VG27AQ 27" QHD 1440p 165Hz IPS (Primary monitor)
+- BenQ BL2420PT 24" QHD 1440p 60Hz IPS (Secondary monitor)
 - UGREEN USB 3.0 Sharing Switch
 - iPhone 14 Pro (Deep Purple)
 - Apple Watch Series 3
-- AirPods (for on the go)
+- AirPods Pro (2nd Gen)

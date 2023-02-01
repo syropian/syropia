@@ -6,7 +6,7 @@ export interface Props {
     title: string;
     type?: string;
     description: string;
-    publishedAt?: string;
+    publishedAt?: Date;
   };
 }
 
@@ -30,7 +30,7 @@ const og = {
   ...(meta.type === "article" && {
     article: {
       author: "Collin Henderson",
-      publishedTime: new Date(meta.publishedAt as string).toISOString(),
+      publishedTime: meta.publishedAt?.toISOString(),
     },
   }),
 };
@@ -115,7 +115,7 @@ const og = {
           >
         </nav>
       </header>
-      <main class="mt-16 sm:mt-32">
+      <main class="mt-16 sm:mt-20">
         <slot />
       </main>
       <footer class="my-10">
@@ -130,7 +130,7 @@ const og = {
 
 <style>
   header nav a::after {
-    @apply bg-brand transition-transform absolute bottom-[-5px] left-0 w-full h-0.5 content-[''] scale-x-0;
+    @apply absolute bottom-[-5px] left-0 h-0.5 w-full scale-x-0 bg-brand transition-transform content-[''];
   }
 
   header nav a.active::after,
