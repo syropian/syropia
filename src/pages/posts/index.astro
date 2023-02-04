@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
-);
+const posts = (await getCollection("posts"))
+  .filter((post) => !post.data.isDraft)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString("en", {

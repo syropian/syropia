@@ -5,6 +5,7 @@ const postsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     publishedAt: z.string().transform((str) => new Date(str)),
+    isDraft: z.boolean().optional(),
   }),
 });
 

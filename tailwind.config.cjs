@@ -1,13 +1,15 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
+const BRAND_COLOR = "#dc393e";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       colors: {
-        brand: "#dc393e",
+        brand: BRAND_COLOR,
         gray: colors.slate,
       },
       fontFamily: {
@@ -19,7 +21,7 @@ module.exports = {
             a: {
               transition: "color 150ms linear",
               "&:hover": {
-                color: "#dc393e",
+                color: BRAND_COLOR,
               },
             },
           },
