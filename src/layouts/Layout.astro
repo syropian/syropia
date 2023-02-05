@@ -124,10 +124,13 @@ const og = {
       <main class="mt-16 sm:mt-20">
         <slot />
       </main>
-      <footer class="mb-10 mt-16 flex items-center justify-between">
+      <footer
+        class="mb-10 mt-16 flex items-end justify-between sm:items-center"
+      >
         <p class="text-sm text-gray-500 dark:text-gray-400">
-          &copy; {new Date().getFullYear()} Collin Henderson. Don't steal my stuff
-          pls.
+          <span>&copy; {new Date().getFullYear()} Collin Henderson.</span>
+          <br class="block sm:hidden" />
+          <span>Don't steal my stuff pls.</span>
         </p>
         <a href="/rss.xml" target="_blank" class="group">
           <span class="sr-only">RSS Feed</span>
