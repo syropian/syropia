@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import { SEO } from "astro-seo";
 
 export interface Props {
@@ -79,6 +80,7 @@ const og = {
         ],
       }}
     />
+    <ViewTransitions />
   </head>
   <body class="dark:bg-gray-900">
     <div class="layout mx-auto mt-12 max-w-2xl px-8 md:px-0">

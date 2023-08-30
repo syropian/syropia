@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 
-type Props = CollectionEntry<"posts">["data"];
+type Props = CollectionEntry<"posts">["data"] & { slug: string };
 
 const props = Astro.props;
 
@@ -26,9 +26,10 @@ const meta = {
   >
     <small
       class="mb-2 block pl-6 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 sm:text-sm"
+      transition:name={`${props.slug}-date`} transition:animate="initial"
       >Published on {publishedAt}</small
     >
-    <h1 class="border-l-4 border-brand pl-5 text-3xl sm:text-4xl">
+    <h1 class="border-l-4 border-brand pl-5 text-3xl sm:text-4xl" transition:name={props.slug} transition:animate="initial">
       {props.title}
     </h1>
     <div class="mt-8 sm:mt-12">

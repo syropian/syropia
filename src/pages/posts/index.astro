@@ -34,10 +34,10 @@ const meta = {
           <li class="group relative border-b border-gray-200 dark:border-gray-700">
             <a href={`/posts/${post.slug}`} class="flex items-center py-6">
               <div class="pr-4">
-                <small class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 transition-colors group-hover:text-gray-600 dark:text-gray-400 group-hover:dark:text-gray-300">
+                <small class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 transition-colors group-hover:text-gray-600 dark:text-gray-400 group-hover:dark:text-gray-300" transition:name={`${post.slug}-date`} transition:animate="initial">
                   {formatDate(post.data.publishedAt)}
                 </small>
-                <h3 class="group-hover:text-brand text-2xl font-bold text-gray-600 transition-colors dark:text-gray-300">
+                <h3 class="group-hover:text-brand text-2xl font-bold text-gray-600 transition-colors dark:text-gray-300" transition:name={post.slug} transition:animate="initial">
                   {post.data.title}
                 </h3>
               </div>
