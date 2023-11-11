@@ -1,0 +1,279 @@
+---
+title: Throttling notification channels in Laravel
+publishedAt: 11-11-2023
+description: In this article, I'm going to show you how you can leverage Laravel's rate limiter to throttle specific channels for your notifications.
+isDraft: false
+---
+
+When sending notifications through multiple channels (say email and SMS), you may want to throttle the number of notifications sent through a specific channel. For example, you could limit the number of SMS notifications sent to a user to 1 per day, and limit emails to 5 per day. I'm going to show you how we can leverage Laravel's `RateLimiter` class to achieve this.
+
+## Setting up our notification
+
+First let's set up an example notification class.
+
+```bash
+php artisan make:notification PostFavouritedNotification
+```
+
+Now let's modify the `via` methods to define two channels — `mail` and `database`
+
+```php
+public function via(object $notifiable): array
+{
+  return ['mail', 'database'];
+}
+```
+
+Since we're using the database channel, we should ensure we have the table setup in our database correctly. Fortunately, Laravel provides a migration for this out of the box. Let's run it now.
+
+```bash
+php artisan notifications:table
+php artisan migrate
+```
+
+Great! We can now flip back to our `PostFavouritedNotification` class so we can set up our per-channel rate limiting. We'll do this by implementing the `shouldSend` function which acts as the final "gatekeeper" to determine if a notification should send.
+
+```php
+/**
+ * Determine if the notification should be sent.
+ */
+public function shouldSend(object $notifiable, string $channel): bool
+{
+    return true
+}
+```
+
+This function will be called for each channel we defined in the `via` method. We can use this to determine if we should send the notification through a specific channel. For example, we could return `false` if the channel is `mail` and the user has already received an email less than an hour ago. Now it's time to set up our rate limiter!
+
+Since we always want database notifications to send, we'll return `true` if the channel is `database`. Otherwise, we'll use the `RateLimiter` class to determine if we should send the notification.
+
+```php
+use Illuminate\Support\Facades\RateLimiter;
+
+/**
+ * Determine if the notification should be sent.
+ */
+public function shouldSend(object $notifiable, string $channel): bool
+{
+    if ($channel === 'database') {
+        return true;
+    }
+
+    return !RateLimiter::tooManyAttempts(
+        key: 'post-favourited-notification:' . $this->post->user->id,
+        maxAttempts: 1,
+    );
+}
+```
+
+Okay, let's break this down a bit. We're using the `tooManyAttempts` method on the `RateLimiter` facade to check if the user has exceeded the maximum number of attempts. If they have, we return `false` to prevent the notification from sending. If they haven't, we return `true` to allow the notification to send. Since our goal is to limit emails to a maximum of one email per hour, we'll set the `maxAttempts` to `1`.
+
+The `key` paramter is important here — it's used to identify the rate limiter and scope it to the user. You're welcome to chain as many additional entity keys to further scope your limiter as you like.
+
+## Incrementing the limiter
+
+So how does the rate limiter know when we've made too many attempts? Well, we need to increment the limiter each time we send a notification. Let's assume we're sending the notification from an event listener. We can increment the limiter like so:
+
+```php
+
+use App\Events\PostFavourited;
+use Illuminate\Support\Facades\RateLimiter;
+use App\Notifications\PostFavouritedNotification;
+
+/**
+ * Handle the event.
+ */
+public function handle(PostFavourited $event): void
+{
+    $event->post->user->notify(new PostFavouritedNotification(
+        user: $event->user,
+        post: $event->post,
+    ));
+
+    RateLimiter::hit(
+        key: 'post-favourited-notification:' . $event->post->user->id,
+        decaySeconds: 60 * 60 // 1 hour
+    );
+}
+```
+
+Here we're calling the `hit` method on the `RateLimiter` facade to increment the limiter. We construct the key in a way that it matches what we're checking when calling `tooManyAttempts` in the `shouldSend` function. We're also passing a `decaySeconds` parameter which tells the limiter how long to wait before resetting the number of attempts. In this case, we're setting it to 1 hour.
+
+That's it! We've now successfully set up rate limiting for our notification channels. 🎉
+
+## Bonus round — testing
+
+If you're like me, you'll want to test this. Unfortunately the process is not quite as straightforward as I'd like, however with a bit of cleverness we can make do no problem. For simplicity's sake we'll be using [Pest](https://pestphp.com/) to write our tests.
+
+```bash
+php artisan pest:test RateLimitsPostFavouritedEmailNotificationsTest
+```
+
+```php
+<?php
+
+use App\Events\PostFavourited;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\PostFavouritedNotification;
+
+test('Only sends a maximum of one favourited post email notification every hour to a specific user', function () {
+  // 1. Set up your world here...
+  // $post = Post::factory()->create([...]);
+  //
+  // 2. Set up the notification fake
+  Notification::fake();
+  // 3. Fire the event
+  event(new PostFavourited(
+    user: auth()->user(),
+    post: $post
+  ));
+});
+```
+
+Ok, we've created a test, set up our world, set up our notification fake, and fired off the event. So how do we test what channels the notification was sent through? This is where things get a little dicey. Your first instinct might be to reach for the `assertSentTo` method on the notification fake. You're right — but probably not for the reason you'd expect! Let's try it how we might expect it to work.
+
+```php
+// ...
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) {
+      return $channels === ['mail', 'database'];
+    }
+);
+```
+
+If we run this test we'll find it passes! Nice! Well...sort of. We still haven't actually tested that the notification won't send an email for another hour. Ok, no problem! Let's try this.
+
+```php
+// ...
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) {
+      return $channels === ['mail', 'database'];
+    }
+);
+
+// Fire another event!
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) {
+      return $channels === ['database'];
+    }
+);
+```
+
+This time we're asserting that the notification was only sent through the database channel, since our previous event should have exhausted the rate limiter.
+
+If we run this test, we'll find it fails! Why? It turns out `assertSentTo` will run the callback for each channel specified in the notifications `via` method, and if any callback returns `true`, the assertion will pass. This is not what we want. We want to ensure that the notification was only sent through the database channel. Fortunately we piggyback off the closures we're already defining to instead update a variable we define. Right below `Notification::fake()` let's create a variable called `$lastNotificationChannels` and set it to an empty array.
+
+```php
+// ...
+Notification::fake();
+$lastNotificationChannels = [];
+//...
+```
+
+Now we'll modify our closures in the `assertSentTo` calls to update this variable.
+
+```php
+// ...
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) use (&$lastNotificationChannels) {
+      $lastNotificationChannels = $channels
+
+      return true;
+    }
+);
+
+expect($lastNotificationChannels)->toEqualCanonicalizing(['mail', 'database']);
+
+// Fire another event!
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) {
+      $lastNotificationChannels = $channels
+      return true;
+    }
+);
+
+expect($lastNotificationChannels)->toEqualCanonicalizing(['database']);
+```
+
+When you run the test all of your assertions should now be passing! Just one more piece left — testing that after an hour, the user will indeed receive another email. Laravel's mock time helpers make this a piece of cake.
+
+```php
+// ...
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) use (&$lastNotificationChannels) {
+      $lastNotificationChannels = $channels
+
+      return true;
+    }
+);
+
+expect($lastNotificationChannels)->toEqualCanonicalizing(['mail', 'database']);
+
+// Fire another event!
+event(new PostFavourited(
+  user: auth()->user(),
+  post: $post
+));
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) {
+      $lastNotificationChannels = $channels
+      return true;
+    }
+);
+
+expect($lastNotificationChannels)->toEqualCanonicalizing(['database']);
+
+$this->travel(1)->hour();
+
+Notification::assertSentTo(
+    $post->user,
+    function (PostFavouritedNotification $notification, array $channels) {
+      $lastNotificationChannels = $channels
+      return true;
+    }
+);
+
+expect($lastNotificationChannels)->toEqualCanonicalizing(['mail', 'database']);
+```
+
+Awesome! We've now confirmed that our notification rate limiting is working as intended. 🎉
+
+That's all for now! If you have any questions or comments, feel free to ping me on Twitter, [@syropian](https://twitter.com/syropian).
