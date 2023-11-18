@@ -14,7 +14,8 @@ description: My everyday hardware and software for coding, gaming, and more.
   - [Tokyo Night](https://marketplace.visualstudio.com/items?itemName=enkia.tokyo-night)
   - [Aura](https://github.com/daltonmenezes/aura-theme)
   - [Catppuccin](https://github.com/catppuccin/catppuccin)
-- Typeface — [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+  - [Universe](https://github.com/MatiasOlivera/universe-theme)
+- Typeface — [Monaspace Neon](https://monaspace.githubnext.com/)
 - Terminal — [iTerm 2](https://www.iterm2.com/)
 - Shell — [Fish](https://fishshell.com/)
 
