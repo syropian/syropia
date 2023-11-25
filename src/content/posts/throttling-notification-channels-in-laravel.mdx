@@ -43,11 +43,11 @@ In our example, we want to throttle the number of notifications sent through the
 
 ### Listening for notification events
 
-When Laravel sends a notification, it first dispatches a `NotificationSending` event. This event has a special power, and I'll include explain it through this excerpt taken directly from the [Laravel documenation](https://laravel.com/docs/notifications#notification-events):
+When Laravel sends a notification, it first dispatches a `NotificationSending` event. This event has a special power, and I'll explain it through this excerpt taken directly from the [Laravel documentation](https://laravel.com/docs/notifications#notification-events):
 
 > The notification will not be sent if an event listener for the `NotificationSending` event returns `false` from its `handle` method.
 
-Interesting! This means we can control if this notification gets sent out by simply returning true or false in a event listener. Let's create that listener class now.
+Interesting! This means we can control if this notification gets sent out by simply returning `true` or `false` in an event listener. Let's go ahead and create that listener class now.
 
 ```bash
 php artisan make:listener CheckNotificationRateLimiter
