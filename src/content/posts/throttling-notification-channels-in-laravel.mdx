@@ -193,6 +193,8 @@ protected $listen = [
 
 Perfect! We've now successfully set up rate limting for our notification's mail channel.
 
+## Refactoring 
+
 You may be thinking, "Ok great, but how do I configure different limiters for different notifications?". You'll recall that the event object passed from `NotificationSending` and `NotificationSent` has a `notification` property. This is the actual notification instance that is being sent. We can use this to to configure different limiters for different notifications. You could modify the `CheckNotificationRateLimiter` listener to do just that.
 
 ```php
