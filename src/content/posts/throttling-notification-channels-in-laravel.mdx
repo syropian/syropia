@@ -1,6 +1,7 @@
 ---
 title: Throttling notification channels in Laravel
 publishedAt: 11-11-2023
+updatedAt: 11-25-2023
 description: In this article, I'm going to show you how you can leverage Laravel's rate limiter to throttle specific channels for your notifications.
 isDraft: false
 ---
@@ -193,8 +194,6 @@ protected $listen = [
 
 Perfect! We've now successfully set up rate limting for our notification's mail channel.
 
-## Refactoring 
-
 You may be thinking, "Ok great, but how do I configure different limiters for different notifications?". You'll recall that the event object passed from `NotificationSending` and `NotificationSent` has a `notification` property. This is the actual notification instance that is being sent. We can use this to to configure different limiters for different notifications. You could modify the `CheckNotificationRateLimiter` listener to do just that.
 
 ```php
@@ -214,7 +213,11 @@ public function handle(NotificationSending $event)
 }
 ```
 
-This will work just fine, but as you may have noticed, it's not very scalable. If you have a lot of notifications, you'll end up with a lot of conditional statements. I think a nice API to handle this would be to define a throttle configuration on the notification class itself. Let's build a quick contract class for this method. Go ahead and create a new interface called `ThrottlesChannels`.
+This will work just fine, but as you may have noticed, it's not very scalable. If you have a lot of notifications, you'll end up with a lot of conditional statements.
+
+## Refactoring to an interface
+
+I think a nice API to handle this would be to define a throttle configuration directly on the notification class itself. Let's build a quick contract class for this method. Go ahead and create a new interface called `ThrottlesChannels`. You can put it in the anywhere you like in the `app` directory, but I'll put it in `app/contracts`.
 
 ```php
 <?php

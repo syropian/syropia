@@ -5,6 +5,10 @@ const postsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     publishedAt: z.string().transform((str) => new Date(str)),
+    updatedAt: z
+      .string()
+      .optional()
+      .transform((str) => (str ? new Date(str) : undefined)),
     isDraft: z.boolean().optional(),
   }),
 });

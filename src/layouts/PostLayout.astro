@@ -12,6 +12,12 @@ const publishedAt = props.publishedAt.toLocaleDateString("en", {
   day: "numeric",
 });
 
+const updatedAt = props.updatedAt?.toLocaleDateString("en", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
 const meta = {
   title: props.title,
   description: props.description,
@@ -33,6 +39,7 @@ const meta = {
       {props.title}
     </h1>
     <div class="mt-8 sm:mt-12">
+      {updatedAt && <p class="text-[0.9em]"><em>This post was last updated on {updatedAt}</em></p>}
       <slot />
     </div>
   </article>
