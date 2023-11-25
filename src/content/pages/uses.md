@@ -1,6 +1,6 @@
 ---
 title: Uses
-updatedAt: 02-01-2023
+updatedAt: 11-24-2023
 description: My everyday hardware and software for coding, gaming, and more.
 ---
 
