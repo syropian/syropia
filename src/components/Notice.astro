@@ -8,20 +8,19 @@ const { type = "info" } = Astro.props;
 
 <div
   class:list={[
-    "p-4 border-l-4 prose-p:my-0 prose-code:text-blue-900 dark:prose-code:text-blue-300 rounded-tr-lg rounded-br-lg",
+    "p-4 border-l-4 rounded-tr-lg rounded-br-lg relative mt-12 not-prose",
     {
       "border-blue-400 bg-blue-100 dark:bg-blue-900/50 dark:border-blue-700":
         type === "info",
-      "border-yellow-400 bg-yellow-100": type === "warning",
+      "border-yellow-400 bg-yellow-100 dark:bg-yellow-400/10": type === "warning",
     },
   ]}
 >
-  <div class="flex">
-    <div class="flex-shrink-0">
+    <div class="absolute -top-5 -left-5 rounded-full border-2 border-white dark:border-gray-900 overflow-hidden bg-white dark:bg-gray-900">
       {
         type === "info" && (
           <svg
-            class="w-5 h-5 text-blue-400 dark:text-blue-300 mt-0.5"
+            class="w-8 h-8 text-blue-400 dark:text-blue-600"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
@@ -36,29 +35,22 @@ const { type = "info" } = Astro.props;
       }
       {
         type === "warning" && (
-          <svg
-            class="w-5 h-5 text-yellow-400"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-              clip-rule="evenodd"
-            />
+          <svg xmlns="http://www.w3.org/2000/svg" class="text-yellow-400 dark:text-yellow-300 h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
           </svg>
         )
       }
     </div>
+  <div class="flex">
     <div class="ml-3">
       <span class="sr-only">Note</span>
       <div
         class:list={[
           "mt-0 mb-0 leading-relaxed",
+          "[&_code]:rounded [&_code]:text-base [&_code]:px-1 [&_code]:py-0.5 [&_a]:underline",
           {
-            "text-blue-900": type === "info",
-            "text-yellow-900": type === "warning",
+            "text-blue-700 dark:text-blue-100 [&_code]:bg-blue-300 [&_code]:text-blue-800 dark:[&_code]:bg-blue-700 dark:[&_code]:text-blue-50": type === "info",
+            "text-yellow-800 [&_code]:bg-yellow-800 [&_code]:text-yellow-50 dark:text-yellow-500": type === "warning",
           },
         ]}
       >
