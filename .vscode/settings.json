@@ -5,5 +5,8 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
+  "[mdx]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+  },
   "typescript.tsdk": "node_modules/typescript/lib"
 }

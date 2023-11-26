@@ -1,7 +1,7 @@
 ---
 title: Throttling notification channels in Laravel
 publishedAt: 11-11-2023
-updatedAt: 11-25-2023
+updatedAt: 11-26-2023
 description: In this article, I'm going to show you how you can leverage Laravel's rate limiter to throttle specific channels for your notifications.
 isDraft: false
 ---
@@ -11,7 +11,9 @@ import Notice from "../../components/Notice.astro";
 When sending notifications through multiple channels (say email and SMS), you may want to throttle the number of notifications sent through a specific channel. For example, you could limit the number of SMS notifications sent to a user to 1 per day, and limit emails to 5 per day. I'm going to show you how we can leverage Laravel's `RateLimiter` class to achieve this with only a few lines of code.
 
 <Notice>
-  If you're interested in this functionality, but don't want to maintain it yourself, I've <a href="https://github.com/syropian/laravel-notification-channel-throttling" target="_blank" rel="noopener noreferrer">built a package</a> that does all the hard work for you. Feel free to leave a ⭐️ if you find it useful!
+  If you're interested in this functionality, but don't want to maintain it
+  yourself, I've
+  <a href="https://github.com/syropian/laravel-notification-channel-throttling" target="_blank" rel="noopener noreferrer">built a package</a> that does all the hard work for you. Feel free to leave a ⭐️ if you find it useful!
 </Notice>
 
 ## Setting up our notification
@@ -55,6 +57,7 @@ php artisan make:listener CheckNotificationRateLimiter
 ```
 
 You should have something like so:
+
 ```php
 <?php
 
@@ -407,4 +410,99 @@ That's it! Beautifully simple notification channel throttling, just by implement
 
 ## Bonus round — testing
 
-Coming soon...
+So what does the testing story look like here? Fortunately Laravel provides us with pretty much everything we need to easily test this functionality. Let's start by creating a test called `ThrottlesChannelsTest`. For this example I'm going to be using Pest, but this will work just fine with PHPUnit as well.
+
+```
+php artisan make:test ThrottlesChannelsTest --pest
+```
+
+Ok let's get started. First we'll set up some factory data so we have the required entities to send the notification.
+
+```php
+<?php
+
+use App\Models\User;
+use App\Models\Post;
+
+beforeEach(function () {
+    $this->author = User::factory()->create();
+    $this->user = User::factory()->create();
+    $this->post = Post::factory()->create(['user_id' => $this->author->id]);
+});
+```
+
+Now lets write a test to confirm that our channels are throttled how we expect. The first thing we will do is fake Laravel's built-in `MessageSent` event. Here's another excerpt straight from the [Laravel documentation](https://laravel.com/docs/mail#events):
+
+> Laravel fires two events during the process of sending mail messages. The MessageSending event is fired prior to a message being sent, while the MessageSent event is fired after a message has been sent.
+
+Cool! What we'll do now is fake the `MessageSent` event so we can perform assertions on it after sending out notifications.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Mail\Events\MessageSent;
+use Illuminate\Notifications\DatabaseNotification;
+// ...
+it('throttles notification channels', function () {
+    Event::fake([
+        MessageSent::class,
+    ]);
+});
+```
+
+Now we'll send two notifications back-to-back. We'll assert that the `MessageSent` event was only called once, and also assert that there are two `DatabaseNotification` records in the database.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Mail\Events\MessageSent;
+// ...
+it('throttles notification channels', function () {
+    Event::fake([
+        MessageSent::class,
+    ]);
+
+    $this->author->notify(new PostFavouritedNotification($this->post, $this->user));
+    $this->author->notify(new PostFavouritedNotification($this->post, $this->user));
+
+    Event::assertDispatched(MessageSent::class, 1);
+    expect(DatabaseNotification::count())->toBe(2);
+});
+```
+
+If we go ahead and run these tests they should be passing. Nice! However, we should also test that after 1 hour, another mail notification will indeed be sent. Fortunately Laravel comes with a `travel` that allows us to travel to a specific time. Let's see what that looks like.
+
+```php
+use Illuminate\Support\Facades\Event;
+use Illuminate\Mail\Events\MessageSent;
+// ...
+it('throttles notification channels', function () {
+    Event::fake([
+        MessageSent::class,
+    ]);
+
+    $this->author->notify(new PostFavouritedNotification($this->post, $this->user));
+    $this->author->notify(new PostFavouritedNotification($this->post, $this->user));
+
+    Event::assertDispatched(MessageSent::class, 1);
+    expect(DatabaseNotification::count())->toBe(2);
+
+    // Travel 1 hour in the future and send another notification
+    $this->travel(1)->hours();
+
+    $this->author->notify(new PostFavouritedNotification($this->post, $this->user));
+
+    Event::assertDispatched(MessageSent::class, 2);
+    expect(DatabaseNotification::count())->toBe(3);
+});
+```
+
+How easy is that? As a best practice we should probably reset the test time back to default after each test runs. We can do this by calling the `travelBack` method inside an `afterEach` hook.
+
+```php
+// ...
+afterEach(function () {
+    $this->travelBack();
+});
+// ...
+```
+
+If you made it this far, thanks for reading! I hope you found this article useful. If you have any questions or comments, feel free to reach out to me on [Twitter](https://twitter.com/syropian).
