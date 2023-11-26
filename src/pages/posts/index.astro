@@ -34,10 +34,18 @@ const meta = {
           <li class="group relative border-b border-gray-200 dark:border-gray-700">
             <a href={`/posts/${post.slug}`} class="flex items-center py-6">
               <div class="pr-4">
-                <small class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 transition-colors group-hover:text-gray-600 dark:text-gray-400 group-hover:dark:text-gray-300" transition:name={`${post.slug}-date`} transition:animate="initial">
+                <small
+                  class="mb-2 block text-sm font-semibold uppercase tracking-wider text-gray-500 transition-colors group-hover:text-gray-600 dark:text-gray-400 group-hover:dark:text-gray-300"
+                  transition:name={`${post.slug}-date`}
+                  transition:animate="initial"
+                >
                   {formatDate(post.data.publishedAt)}
                 </small>
-                <h3 class="group-hover:text-brand text-2xl font-bold text-gray-600 transition-colors dark:text-gray-300" transition:name={post.slug} transition:animate="initial">
+                <h3
+                  class="text-2xl font-bold text-gray-600 transition-colors group-hover:text-brand dark:text-gray-300"
+                  transition:name={post.slug}
+                  transition:animate="initial"
+                >
                   {post.data.title}
                 </h3>
               </div>
@@ -56,7 +64,7 @@ const meta = {
             </a>
             <div
               aria-hidden
-              class="bg-brand absolute left-0 -bottom-px z-10 h-1 w-full origin-left scale-x-0 transition-transform group-hover:scale-x-100"
+              class="absolute -bottom-px left-0 z-10 h-1 w-full origin-left scale-x-0 bg-brand transition-transform group-hover:scale-x-100"
             />
           </li>
         ))

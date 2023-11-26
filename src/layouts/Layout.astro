@@ -1,6 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import { ScrollObserver } from 'astro-scroll-observer';
+import { ViewTransitions } from "astro:transitions";
+import { ScrollObserver } from "astro-scroll-observer";
 import { SEO } from "astro-seo";
 
 export interface Props {
@@ -38,7 +38,7 @@ const og = {
 };
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -107,14 +107,14 @@ const og = {
           <a
             href="/posts"
             class:list={[
-              "relative text-sm font-bold tracking-widest uppercase nav-link text-brand",
+              "nav-link relative text-sm font-bold uppercase tracking-widest text-brand",
               { active: Astro.url.pathname.startsWith("/posts") },
             ]}>Posts</a
           >
           <a
             href="/uses"
             class:list={[
-              "relative text-sm font-bold tracking-widest uppercase nav-link text-brand",
+              "nav-link relative text-sm font-bold uppercase tracking-widest text-brand",
               { active: Astro.url.pathname.startsWith("/uses") },
             ]}>Uses</a
           >

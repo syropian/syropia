@@ -5,8 +5,5 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "prettier.documentSelectors": [
-    "**/*.astro"
-  ],
   "typescript.tsdk": "node_modules/typescript/lib"
 }
