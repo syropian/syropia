@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.0.0",
     "astro": "^3.0.2",
     "astro-google-fonts-optimizer": "^0.2.2",
+    "astro-scroll-observer": "^0.5.3",
     "astro-seo": "^0.8.0",
     "markdown-it": "^13.0.1",
     "sanitize-html": "^2.9.0",

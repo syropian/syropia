@@ -20,6 +20,9 @@ dependencies:
   astro-google-fonts-optimizer:
     specifier: ^0.2.2
     version: 0.2.2
+  astro-scroll-observer:
+    specifier: ^0.5.3
+    version: 0.5.3
   astro-seo:
     specifier: ^0.8.0
     version: 0.8.0
@@ -1059,6 +1062,12 @@ packages:
 
   /astro-google-fonts-optimizer@0.2.2:
     resolution: {integrity: sha512-YQxp/ExF3NzUomAGuu1VKecO7/ETRnhnE50gqwAqfpbGPZFj4MYa4XxK1ukBg3R63QmKuE5uurOiKmXiLzttuw==}
+    dev: false
+
+  /astro-scroll-observer@0.5.3:
+    resolution: {integrity: sha512-J7p9c501d7bNi1H9poiiSUPcodiRmBKa/bTTDCkTQkMvCF0iLkKDlkGcIoCTvSYUTC5wtfTJwc2bdv+tHKUDkg==}
+    dependencies:
+      lodash-es: 4.17.21
     dev: false
 
   /astro-seo@0.8.0:
@@ -2218,6 +2227,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+    dev: false
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
   /lodash.castarray@4.4.0:

@@ -26,6 +26,12 @@ const meta = {
 };
 ---
 
+<script>
+  document.querySelector('#scroll-to-top')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 <Layout meta={meta}>
   <article
     class="prose prose-slate mt-8 prose-h2:border-l-4 prose-h2:border-gray-300 prose-h2:pl-2 sm:prose-h2:pl-3 dark:prose-invert dark:prose-h2:border-gray-700 dark:prose-p:text-gray-300 sm:prose-lg prose-h2:[text-wrap:balance] prose-h3:[text-wrap:balance] prose-code:break-words"
@@ -43,4 +49,5 @@ const meta = {
       <slot />
     </div>
   </article>
+  <button type="button" aria-label="Go to top" id="scroll-to-top" class="sticky bottom-10 left-full translate-x-16 w-10 h-10 rounded-full dark:bg-gray-800 dark:hover:bg-gray-700 z-10 text-white [[data-is-top='true']_&]:opacity-0 opacity-100 transition hidden sm:inline-block">&uarr;</button>
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import { ScrollObserver } from 'astro-scroll-observer';
 import { SEO } from "astro-seo";
 
 export interface Props {
@@ -81,6 +82,7 @@ const og = {
       }}
     />
     <ViewTransitions />
+    <ScrollObserver />
   </head>
   <body class="dark:bg-gray-900">
     <div class="layout mx-auto mt-12 max-w-2xl px-8 md:px-0">
