@@ -11,10 +11,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.0.0",
-    "@astrojs/rss": "^3.0.0",
-    "@astrojs/tailwind": "^5.0.0",
-    "astro": "^3.0.2",
+    "@astrojs/mdx": "^2.0.0",
+    "@astrojs/rss": "^4.0.1",
+    "@astrojs/tailwind": "^5.0.3",
+    "astro": "^4.0.3",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-scroll-observer": "^0.5.3",
     "astro-seo": "^0.8.0",
