@@ -21,12 +21,12 @@ description: My everyday hardware and software for coding, gaming, and more.
 
 ## Software
 
-- [Brave](https://brave.com/) — For browsing and development.
+- [Arc](https://arc.net/) — For browsing and development.
 - [Raycast](https://www.raycast.com/) — Like Spotlight, but way better.
 - [Discord](https://discord.com/), [Slack](https://slack.com/) — For chatting on-line.
 - [1Password](https://1password.com/) — Quick, secure access to all my passwords.
 - [Spotify](https://www.spotify.com/) — For tunes and podcasts.
-- [Fantastical](https://flexibits.com/fantastical) — A nice minimal calendar app.
+- [Dato](https://sindresorhus.com/dato) — A nice minimal calendar app.
 - [OBS Studio](https://obsproject.com/) — For livestreaming code and gaming on Twitch.
 - [Loopback](https://rogueamoeba.com/loopback/) — Easy per-source audio routing.
 - [HandyPalette](https://apps.apple.com/us/app/handypalette/id1515022667?mt=12) — A clean and minimal colour grabbing tool.
