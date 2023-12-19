@@ -22,14 +22,13 @@ description: My everyday hardware and software for coding, gaming, and more.
 ## Software
 
 - [Arc](https://arc.net/) — For browsing and development.
-- [Raycast](https://www.raycast.com/) — Like Spotlight, but way better.
-- [Discord](https://discord.com/), [Slack](https://slack.com/) — For chatting on-line.
+- [Raycast](https://www.raycast.com/) — The ultimate productivity tool. It's like Spotlight, but way better.
+- [Discord](https://discord.com/), [Slack](https://slack.com/) — For chit-chatting on the www.
 - [1Password](https://1password.com/) — Quick, secure access to all my passwords.
 - [Spotify](https://www.spotify.com/) — For tunes and podcasts.
 - [Dato](https://sindresorhus.com/dato) — A nice minimal calendar app.
-- [OBS Studio](https://obsproject.com/) — For livestreaming code and gaming on Twitch.
+- [OBS Studio](https://obsproject.com/) — For recording and livestreaming.
 - [Loopback](https://rogueamoeba.com/loopback/) — Easy per-source audio routing.
-- [HandyPalette](https://apps.apple.com/us/app/handypalette/id1515022667?mt=12) — A clean and minimal colour grabbing tool.
 - [Figma](https://www.figma.com/) — For all my design needs.
 - [Magnet](https://magnet.crowdcafe.com/) — Awesome little window management tool.
 - [PixelSnap](https://getpixelsnap.com/) — For measuring spacing and sizes on screen.
