@@ -1,19 +1,17 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro'
 
 const meta = {
-  title: "Home",
-  description: "The personal website of Collin Henderson",
-};
+  title: 'Home',
+  description: 'The personal website of Collin Henderson',
+}
 ---
 
 <Layout meta={meta}>
   <section class="intro">
     <h2 class="text-3xl leading-normal">
       <span class="block font-bold text-brand">Hi there!</span>
-      <span class="font-light text-gray-500 dark:text-gray-300"
-        >I'm Collin Henderson</span
-      >
+      <span class="font-light text-gray-500 dark:text-gray-300">I'm Collin Henderson</span>
     </h2>
     <div class="mt-8 space-y-6 sm:space-y-8">
       <div>
@@ -22,11 +20,8 @@ const meta = {
         >
           About Me
         </h3>
-        <p
-          class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400"
-        >
-          A digital explorer, builder, and educator living in lovely
-          Collingwood, Ontario 🇨🇦&nbsp;with my
+        <p class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400">
+          A digital explorer, builder, and educator living in lovely Collingwood, Ontario 🇨🇦&nbsp;with my
           <a
             href="https://www.glovelylocks.ca"
             target="_blank"
@@ -53,12 +48,9 @@ const meta = {
         >
           Professionally
         </h3>
-        <p
-          class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400"
-        >
-          I'm a developer with over ten years of expertise in helping companies
-          build great web experiences. Currently working as a full stack
-          engineer at <a
+        <p class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400">
+          I'm a developer with over ten years of expertise in helping companies build great web experiences. Currently
+          working as a full stack engineer at <a
             class="text-[#d14010]"
             href="https://www.felixforyou.ca/"
             target="_blank"
@@ -72,19 +64,15 @@ const meta = {
         >
           Hobbies
         </h3>
-        <p
-          class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400"
-        >
-          I play volleyball, video games, and instruments. I also enjoy Ghibli
-          films, severe weather, and bird-watching in my backyard.
+        <p class="mt-2 text-lg font-medium leading-loose text-gray-700 dark:text-gray-400">
+          I play volleyball, video games, and instruments. I also enjoy Ghibli films, severe weather, and bird-watching
+          in my backyard.
         </p>
       </div>
     </div>
     <section class="mt-16 md:flex md:justify-between">
       <div class="projects">
-        <h3 class="text-2xl font-light text-gray-500 dark:text-gray-300">
-          Projects
-        </h3>
+        <h3 class="text-2xl font-light text-gray-500 dark:text-gray-300">Projects</h3>
         <ul class="mt-6 space-y-4">
           <li>
             <a
@@ -93,9 +81,7 @@ const meta = {
               target="_blank"
               rel="noopener noreferrer nofollow">Astral &rarr;</a
             >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
               Organize your GitHub Stars with ease
             </p>
           </li>
@@ -106,9 +92,7 @@ const meta = {
               target="_blank"
               rel="noopener noreferrer nofollow">Knot &rarr;</a
             >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
               A self-hosted social network for families and other small groups
             </p>
           </li>
@@ -125,18 +109,12 @@ const meta = {
                 rel="noopener noreferrer nofollow">UnderWraps &rarr;</a
               >
             </div>
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
-              Beautifully simple gift exchanges
-            </p>
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">Beautifully simple gift exchanges</p>
           </li>
         </ul>
       </div>
       <div class="social mt-8 md:mt-0">
-        <h3 class="text-2xl font-light text-gray-500 dark:text-gray-300">
-          Social
-        </h3>
+        <h3 class="text-2xl font-light text-gray-500 dark:text-gray-300">Social</h3>
         <ul class="mt-6 space-y-4">
           <li>
             <a
@@ -145,37 +123,16 @@ const meta = {
               rel="noopener noreferrer nofollow"
               href="https://github.com/syropian">GitHub &rarr;</a
             >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
-              Open source goodness
-            </p>
-          </li>
-          <li>
-            <a
-              class="text-brand transition-colors hover:text-red-700"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              href="https://twitter.com/syropian">Twitter &rarr;</a
-            >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
-              Geeky ramblings and such
-            </p>
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">Open source goodness</p>
           </li>
           <li>
             <a
               class="text-brand transition-colors hover:text-red-700"
               target="_blank"
               rel="me noopener noreferrer"
-              href="https://mastodon.social/@syropian">Mastodon &rarr;</a
+              href="https://bsky.app/profile/syropian.bsky.social">Bluesky &rarr;</a
             >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
-              Toot toot
-            </p>
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">Geeky ramblings and such</p>
           </li>
           <li>
             <a
@@ -184,11 +141,7 @@ const meta = {
               rel="noopener noreferrer nofollow"
               href="https://twitch.com/syropian">Twitch &rarr;</a
             >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
-              Watch me code live
-            </p>
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">Watch me code live</p>
           </li>
           <li>
             <a
@@ -197,10 +150,8 @@ const meta = {
               rel="noopener noreferrer nofollow"
               href="https://instagram.com/syropian">Instagram &rarr;</a
             >
-            <p
-              class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm"
-            >
-              Pictures of sunsets and my <s>cats</s> kid
+            <p class="mt-2 text-base text-gray-700 dark:text-gray-400 sm:text-sm">
+              Pictures of sunsets and my <s>cats</s> kids
             </p>
           </li>
         </ul>
